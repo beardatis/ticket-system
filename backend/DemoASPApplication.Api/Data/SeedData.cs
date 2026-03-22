@@ -45,7 +45,7 @@ public static class SeedData
                     Status = TicketStatus.Open,
                     Priority = TicketPriority.High,
                     CategoryId = bugCategoryId,
-                    CreatedAt = DateTime.Now.AddHours(-5),
+                    CreatedAt = DateTime.UtcNow.AddHours(-5),
                 },
                 new Ticket
                 {
@@ -54,7 +54,7 @@ public static class SeedData
                     Status = TicketStatus.Open,
                     Priority = TicketPriority.Medium,
                     CategoryId = featureCategoryId,
-                    CreatedAt = DateTime.Now.AddHours(-3),
+                    CreatedAt = DateTime.UtcNow.AddHours(-3),
                 },
                 new Ticket
                 {
@@ -63,7 +63,7 @@ public static class SeedData
                     Status = TicketStatus.InProgress,
                     Priority = TicketPriority.Low,
                     CategoryId = supportCategoryId,
-                    CreatedAt = DateTime.Now.AddHours(-1),
+                    CreatedAt = DateTime.UtcNow.AddHours(-1),
                 }
             );
             context.SaveChanges();

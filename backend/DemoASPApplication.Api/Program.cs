@@ -1,5 +1,7 @@
 using DemoASPApplication.Api.Data;
 using Microsoft.EntityFrameworkCore;
+using DemoASPApplication.Api.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +15,16 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .WithOrigins(
+                "https://ticket-system-46rc5cp2i-beardatis-projects.vercel.app"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 var app = builder.Build();
@@ -44,7 +48,7 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    dbContext.Database.EnsureCreated();
+    dbContext.Database.Migrate();
     SeedData.Initialize(dbContext);
 }
 
