@@ -1,0 +1,28 @@
+@baseUrl = https://localhost:7210
+
+### Osszes ticket lekerese
+GET {{baseUrl}}/api/Tickets
+Accept: application/json
+
+###
+
+### Egy Ticket lekerese azonosito alapjan
+GET {{baseUrl}}/api/Tickets/1
+Accept: application/json
+###
+### Egy nem letezo Ticket lekerese
+GET {{baseUrl}}/api/Tickets/999
+Accept: application/json
+###
+
+### Uj ticket letrehozasa
+POST {{baseUrl}}/api/Tickets
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title" : "Nyomtatasi problema",
+  "description" : "A user szerint a nyomtatas kozben a rendszer hibat dob",
+  "priority" : 3
+}
+###
