@@ -16,7 +16,8 @@ builder.Services.AddCors(options =>
     {
         policy
             .WithOrigins(
-                "https://ticket-system-20w217ayv-beardatis-projects.vercel.app"
+                "https://ticket-system-20w217ayv-beardatis-projects.vercel.app",
+                "https://ticket-kezelo.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
