@@ -1,0 +1,7 @@
+.idea
+node_modules
+dist
+bin/
+obj/
+.env
+.DS_Store
