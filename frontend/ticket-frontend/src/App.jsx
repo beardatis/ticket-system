@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TicketCard from "./components/TicketCard";
 import TicketForm from "./components/TicketForm";
 
-const API_BASE = "https://localhost:7210/api";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -25,14 +25,14 @@ function App() {
   }, []);
 
   function loadTickets() {
-    fetch(`${API_BASE}/Tickets`)
+    fetch(`${API_BASE}/api/Tickets`)
         .then(res => res.json())
         .then(data => setTickets(data))
         .catch(err => console.error(err));
   }
 
   function loadCategories() {
-    fetch(`${API_BASE}/Categories`)
+    fetch(`${API_BASE}/api/Categories`)
         .then(res => res.json())
         .then(data => setCategories(data))
         .catch(err => console.error(err));
